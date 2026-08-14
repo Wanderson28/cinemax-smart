@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CINEMAX SMART — planos, compatibilidade, dúvidas frequentes e atendimento pelo WhatsApp.">
+  <meta name="theme-color" content="#06152f">
+  <title>CINEMAX SMART | Entretenimento na sua tela</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#04122b; --navy2:#071d42; --blue:#087cf5; --cyan:#19c9ff;
+      --gold:#d8aa4d; --gold2:#ffe08a; --white:#fff; --muted:#aebbd0;
+      --green:#20c86a; --card:rgba(255,255,255,.065);
+      --line:rgba(255,255,255,.12); --shadow:0 20px 60px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,sans-serif;background:var(--navy);color:var(--white);line-height:1.55}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px,92%);margin:auto}
+    .topbar{position:sticky;top:0;z-index:50;background:rgba(4,18,43,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.05em}
+    .brand-mark{font-size:25px;font-style:italic;color:var(--cyan);text-shadow:0 0 20px rgba(25,201,255,.35)}
+    .brand-sub{color:var(--gold2);font-size:11px;letter-spacing:.25em}
+    .navlinks{display:flex;gap:22px;color:#d9e3f2;font-size:14px}
+    .navlinks a:hover{color:var(--gold2)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:999px;padding:14px 22px;font-weight:800;cursor:pointer;transition:.2s transform,.2s box-shadow}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-whats{background:var(--green);box-shadow:0 10px 30px rgba(32,200,106,.25);color:#041b0e}
+    .btn-primary{background:linear-gradient(135deg,var(--cyan),#1767ed);box-shadow:0 15px 40px rgba(8,124,245,.25)}
+    .hero{position:relative;overflow:hidden;padding:86px 0 75px;background:
+      radial-gradient(circle at 80% 15%,rgba(25,201,255,.18),transparent 30%),
+      radial-gradient(circle at 15% 30%,rgba(216,170,77,.12),transparent 30%),
+      linear-gradient(180deg,#061a3c 0%,#04122b 100%)}
+    .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 0 48%,rgba(216,170,77,.07) 50%,transparent 52%);pointer-events:none}
+    .hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+    .eyebrow{display:inline-flex;border:1px solid rgba(216,170,77,.45);border-radius:999px;padding:7px 12px;color:var(--gold2);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}
+    h1{font-size:clamp(38px,6vw,70px);line-height:1.03;letter-spacing:-.045em;margin-bottom:20px}
+    h1 span{background:linear-gradient(90deg,#fff,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{font-size:18px;color:#c7d4e7;max-width:650px;margin-bottom:28px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px;color:#aebbd0;font-size:13px}
+    .trust strong{color:#fff}
+    .hero-card{position:relative;border:1px solid rgba(216,170,77,.3);border-radius:28px;padding:12px;background:rgba(255,255,255,.045);box-shadow:var(--shadow);transform:rotate(1deg)}
+    .hero-card img{width:100%;display:block;border-radius:20px;aspect-ratio:4/3;object-fit:cover}
+    .hero-badge{position:absolute;right:20px;bottom:20px;background:rgba(4,18,43,.92);border:1px solid rgba(216,170,77,.55);border-radius:18px;padding:14px 17px;box-shadow:0 15px 35px rgba(0,0,0,.35)}
+    .hero-badge small{display:block;color:var(--gold2);font-weight:800}.hero-badge b{font-size:28px}
+    section{padding:82px 0}
+    .section-head{text-align:center;max-width:760px;margin:0 auto 42px}
+    .section-head .kicker{color:var(--gold2);font-weight:900;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+    .section-head h2{font-size:clamp(30px,4vw,48px);line-height:1.1;margin:8px 0 12px}
+    .section-head p{color:var(--muted)}
+    .dark2{background:#030d20}
+    .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .benefit{padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+    .icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:rgba(25,201,255,.12);color:var(--cyan);font-size:22px;margin-bottom:15px}
+    .benefit h3{margin-bottom:7px}.benefit p{color:var(--muted);font-size:14px}
+    .media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .media-card{overflow:hidden;border-radius:22px;border:1px solid var(--line);background:#07172f}
+    .media-card img{width:100%;height:230px;object-fit:cover;display:block}
+    .media-card div{padding:18px}.media-card h3{margin-bottom:4px}.media-card p{color:var(--muted);font-size:14px}
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+    .plan{position:relative;border:1px solid var(--line);border-radius:24px;padding:30px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.035));box-shadow:0 15px 45px rgba(0,0,0,.18)}
+    .plan.featured{border-color:var(--gold);box-shadow:0 0 0 1px rgba(216,170,77,.25),0 20px 55px rgba(216,170,77,.12);transform:translateY(-7px)}
+    .ribbon{position:absolute;top:16px;right:16px;background:linear-gradient(90deg,var(--gold),var(--gold2));color:#1b1303;font-size:11px;font-weight:900;padding:6px 10px;border-radius:999px}
+    .plan h3{font-size:18px;color:var(--gold2);text-transform:uppercase;letter-spacing:.05em}
+    .price{font-size:45px;font-weight:900;margin:12px 0 3px}.price small{font-size:15px;color:var(--muted);font-weight:500}
+    .plan p{color:var(--muted);min-height:46px}.plan ul{list-style:none;margin:22px 0}.plan li{padding:8px 0;color:#dce5f3;border-bottom:1px solid rgba(255,255,255,.07);font-size:14px}.plan li:last-child{border-bottom:0}
+    .plan .btn{width:100%}
+    .faq{max-width:850px;margin:auto}.faq-item{border-bottom:1px solid var(--line);padding:20px 0}.faq-q{display:flex;justify-content:space-between;gap:20px;font-weight:800;cursor:pointer}.faq-a{color:var(--muted);font-size:14px;padding-top:10px;display:none}.faq-item.open .faq-a{display:block}
+    .cta{background:linear-gradient(135deg,#072a5a,#061633);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .cta-box{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:30px 0}.cta h2{font-size:clamp(28px,4vw,44px)}.cta p{color:var(--muted);margin-top:6px}
+    footer{padding:42px 0 90px;background:#020916}.footer-grid{display:flex;justify-content:space-between;gap:30px;align-items:center}.footer-copy{color:#8190a6;font-size:13px}.footer-contact{font-weight:800;color:#dce5f3}
+    .float-wa{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#03200f;font-size:26px;box-shadow:0 12px 35px rgba(0,0,0,.4)}
+
+    .poster-section{background:
+      radial-gradient(circle at 10% 20%,rgba(25,201,255,.10),transparent 30%),
+      radial-gradient(circle at 90% 80%,rgba(216,170,77,.10),transparent 30%),#020a18}
+    .poster-wrap{display:grid;grid-template-columns:.72fr 1.28fr;gap:36px;align-items:center}
+    .poster-frame{border:1px solid rgba(216,170,77,.45);border-radius:26px;padding:8px;background:linear-gradient(145deg,rgba(216,170,77,.12),rgba(25,201,255,.06));box-shadow:0 25px 70px rgba(0,0,0,.4)}
+    .poster-frame img{width:100%;display:block;border-radius:20px;max-height:720px;object-fit:cover;object-position:top}
+    .visual-copy h2{font-size:clamp(32px,4vw,54px);line-height:1.06;margin:10px 0 16px}
+    .visual-copy h2 span{color:var(--cyan)}
+    .visual-copy>p{color:var(--muted);font-size:16px;max-width:560px}
+    .feature-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:26px 0}
+    .feature-list div{border:1px solid var(--line);border-radius:16px;padding:14px;background:rgba(255,255,255,.04);font-size:14px;font-weight:700}
+    .feature-list b{color:var(--gold2)}
+    @media(max-width:850px){.poster-wrap{grid-template-columns:1fr}.poster-frame{max-width:520px;margin:auto}.feature-list{grid-template-columns:1fr}}
+
+    @media(max-width:850px){
+      .navlinks{display:none}.hero{padding:60px 0}.hero-grid{grid-template-columns:1fr;gap:35px}.hero-card{transform:none}
+      .benefits,.media-grid,.plans{grid-template-columns:1fr}.plan.featured{transform:none}.cta-box,.footer-grid{flex-direction:column;align-items:flex-start}
+      section{padding:65px 0}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="container">
+      <a class="brand" href="#">
+        <div><div class="brand-mark">CINEMAX<span style="color:#fff">X</span></div><div class="brand-sub">SMART</div></div>
+      </a>
+      <div class="navlinks">
+        <a href="#beneficios">Benefícios</a><a href="#planos">Planos</a><a href="#faq">Dúvidas</a>
+      </div>
+      <a class="btn btn-whats" href="https://wa.me/5588993593496?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20CINEMAX%20SMART%20e%20quero%20conhecer%20os%20planos." target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">CINEMAX SMART • EXPERIÊNCIA NA SUA TELA</div>
+          <h1>Entretenimento do seu jeito, na sua <span>TV, celular ou dispositivo compatível.</span></h1>
+          <p>Conheça os planos da CINEMAX SMART, confira a compatibilidade e tire suas dúvidas antes de falar com nossa equipe.</p>
+          <div class="hero-actions">
+            <a class="btn btn-whats" href="https://wa.me/5588993593496?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20CINEMAX%20SMART%20e%20quero%20conhecer%20os%20planos." target="_blank" rel="noopener">🟢 Quero falar no WhatsApp</a>
+            <a class="btn btn-primary" href="#planos">Ver planos</a>
+          </div>
+          <div class="trust">
+            <span>✓ <strong>Atendimento rápido</strong></span><span>✓ <strong>Planos claros</strong></span><span>✓ <strong>Suporte</strong></span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="assets/futebol.jpg" alt="Experiência esportiva na televisão">
+          <div class="hero-badge"><small>A partir de</small><b>R$ 29,90</b><small>mensal</small></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="poster-section">
+      <div class="container poster-wrap">
+        <div class="poster-frame">
+          <img src="assets/cinemax-poster.png" alt="Arte promocional da CINEMAX SMART">
+        </div>
+        <div class="visual-copy">
+          <div class="kicker" style="color:var(--gold2);font-weight:900;font-size:12px;letter-spacing:.16em;text-transform:uppercase">CINEMAX SMART</div>
+          <h2>Uma experiência de entretenimento pensada para <span>sua tela.</span></h2>
+          <p>Visual premium, informações objetivas e atendimento direto pelo WhatsApp. Conheça os planos, confira a compatibilidade do seu dispositivo e fale com nossa equipe.</p>
+          <div class="feature-list">
+            <div>📺 <b>TV &amp; dispositivos</b><br>Consulte a compatibilidade</div>
+            <div>⚽ <b>Esportes</b><br>Uma experiência para os fãs</div>
+            <div>🎬 <b>Filmes e séries</b><br>Entretenimento em casa</div>
+            <div>💬 <b>Atendimento</b><br>Suporte pelo WhatsApp</div>
+          </div>
+          <a class="btn btn-whats" href="https://wa.me/5588993593496?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20CINEMAX%20SMART%20e%20quero%20conhecer%20os%20planos." target="_blank" rel="noopener">🟢 Falar com a equipe</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="beneficios">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Por que CINEMAX SMART?</div><h2>Uma página feita para você decidir com segurança</h2><p>Informações diretas, planos transparentes e atendimento pelo WhatsApp.</p></div>
+        <div class="benefits">
+          <article class="benefit"><div class="icon">⚡</div><h3>Atendimento rápido</h3><p>Fale diretamente com nossa equipe para tirar dúvidas e escolher o plano ideal.</p></article>
+          <article class="benefit"><div class="icon">📺</div><h3>Compatibilidade</h3><p>Consulte nossa equipe sobre Roku TV, Samsung, LG, Android TV, TV Box e celular.</p></article>
+          <article class="benefit"><div class="icon">🔒</div><h3>Informação clara</h3><p>Veja preços, condições e perguntas frequentes antes de fazer sua assinatura.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark2">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Experiência</div><h2>Conteúdo para diferentes momentos</h2><p>Um visual premium para apresentar sua proposta sem complicação.</p></div>
+        <div class="media-grid">
+          <article class="media-card"><img src="assets/futebol.jpg" alt="Futebol na TV"><div><h3>Esportes</h3><p>Uma experiência pensada para quem gosta de acompanhar seus momentos esportivos.</p></div></article>
+          <article class="media-card"><img src="assets/cinema.jpg" alt="Sala de cinema em casa"><div><h3>Filmes e séries</h3><p>Transforme sua sala em um espaço de entretenimento.</p></div></article>
+          <article class="media-card"><img src="assets/familia.jpg" alt="Família assistindo televisão"><div><h3>Para toda a família</h3><p>Uma proposta de entretenimento para diferentes perfis e momentos.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="planos">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Planos</div><h2>Escolha o período que combina com você</h2><p>Valores apresentados conforme a tabela enviada.</p></div>
+        <div class="plans">
+          <article class="plan"><h3>Plano Mensal</h3><div class="price">R$ 29,90</div><p>Crédito liberado • mensal</p><ul><li>✓ Atendimento pelo WhatsApp</li><li>✓ Orientação de acesso</li><li>✓ Suporte conforme as condições do serviço</li></ul><a class="btn btn-primary" href="https://wa.me/5588993593496?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Plano%20Mensal%20de%20R%24%2029%2C90." target="_blank" rel="noopener">Assinar pelo WhatsApp</a></article>
+          <article class="plan"><h3>Plano Trimestral</h3><div class="price">R$ 74,99</div><p>Crédito liberado • trimestral</p><ul><li>✓ Atendimento pelo WhatsApp</li><li>✓ Orientação de acesso</li><li>✓ Suporte conforme as condições do serviço</li></ul><a class="btn btn-primary" href="https://wa.me/5588993593496?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Plano%20Trimestral%20de%20R%24%2074%2C99." target="_blank" rel="noopener">Assinar pelo WhatsApp</a></article>
+          <article class="plan featured"><div class="ribbon">MELHOR CUSTO-BENEFÍCIO</div><h3>Plano Anual</h3><div class="price">R$ 179,90</div><p>Crédito liberado • anual</p><ul><li>✓ Atendimento pelo WhatsApp</li><li>✓ Orientação de acesso</li><li>✓ Suporte conforme as condições do serviço</li></ul><a class="btn btn-whats" href="https://wa.me/5588993593496?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Plano%20Anual%20de%20R%24%20179%2C90." target="_blank" rel="noopener">Quero o plano anual</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="dark2">
+      <div class="container">
+        <div class="section-head"><div class="kicker">FAQ</div><h2>Dúvidas frequentes</h2><p>As principais respostas antes de entrar em contato.</p></div>
+        <div class="faq">
+          <div class="faq-item"><div class="faq-q">Precisa de cartão de crédito para contratar? <span>＋</span></div><div class="faq-a">Não necessariamente. As formas de pagamento e condições devem ser confirmadas diretamente com nossa equipe pelo WhatsApp.</div></div>
+          <div class="faq-item"><div class="faq-q">Funciona na minha TV? <span>＋</span></div><div class="faq-a">A compatibilidade pode variar conforme o aplicativo, sistema e dispositivo. Fale conosco para confirmar seu modelo: Roku TV, Samsung, LG, Android TV, TV Box ou celular.</div></div>
+          <div class="faq-item"><div class="faq-q">Como recebo meu acesso? <span>＋</span></div><div class="faq-a">Depois da confirmação da contratação, nossa equipe orienta você pelo WhatsApp sobre os próximos passos.</div></div>
+          <div class="faq-item"><div class="faq-q">Qual plano devo escolher? <span>＋</span></div><div class="faq-a">Se você quer testar por um período menor, comece pelo mensal. Para quem já conhece o serviço e busca maior período, o anual é o destaque de custo-benefício.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-box">
+        <div><h2>Pronto para conhecer a CINEMAX SMART?</h2><p>Fale com nossa equipe e tire sua última dúvida antes de escolher.</p></div>
+        <a class="btn btn-whats" href="https://wa.me/5588993593496?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20CINEMAX%20SMART%20e%20quero%20conhecer%20os%20planos." target="_blank" rel="noopener">🟢 Falar no WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><div class="brand-mark">CINEMAX</div><div class="brand-sub">SMART</div><div class="footer-copy">© 2026 CINEMAX SMART. Todos os direitos reservados.</div></div>
+      <div class="footer-contact">WhatsApp: (88) 99359-3496</div>
+    </div>
+  </footer>
+
+  <a class="float-wa" href="https://wa.me/5588993593496?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20CINEMAX%20SMART%20e%20quero%20conhecer%20os%20planos." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">☏</a>
+
+  <script>
+    document.querySelectorAll('.faq-q').forEach(q => q.addEventListener('click', () => {
+      q.parentElement.classList.toggle('open');
+      q.querySelector('span').textContent = q.parentElement.classList.contains('open') ? '−' : '＋';
+    }));
+  </script>
+</body>
+</html>
